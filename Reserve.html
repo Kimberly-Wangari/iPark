@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Reservation</title>
+    <link rel="stylesheet" href="reserve.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    
+    
+    <div class="background">
+    
+        <div class="image-container">
+            <img src="Images/book.jpg" alt="Background Image">
+            
+            <div class="overlay">
+                <nav>
+                    <div class="nav-links" id="navLinks">
+                    <i class="fa fa-times" onclick="hideMenu()"></i>
+                    
+                    <ul>
+                        <li><a href="Index.html">HOME</a></li>
+                        <li><a href="payment.html">PAYMENT</a></li>
+                        <li><a href="Login.html">LOG IN</a></li>
+                        <li><a href="contact.html">CONTACT US</a></li>
+                        
+
+                       
+                    </ul>
+                </div></nav>
+                <h1 class="title">Make A Reservation</h1>
+                <p class="subtitle">Book a parking space!</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="form">
+                <div class="form-group">
+                    <div class="input-container">
+                        <div class="icon">
+                            <i class='bx bxs-location-plus'></i>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="location">Location</label>
+                            <select id="location" required>
+                                <option value="" selected disabled hidden>Select Location</option>
+                                <option value="luton">Wilson Airport</option>
+                                <option value="heathrow">Two Rivers Mall</option>
+                                <option value="gatwick">Sarit Center</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group grid-4">
+                    <div class="input-container">
+                        <div class="icon">
+                            <i class='bx bx-calendar'></i>
+                        </div>
+                        <div class="input-wrapper">
+                            <label>Entry date</label>
+                            <input type="date" id="entryDate" required>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="icon">
+                            <i class='bx bx-time'></i>
+                        </div>
+                        <div class="input-wrapper">
+                            <label>Entry time</label>
+                            <input type="time" id="entryTime" required>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="icon">
+                            <i class='bx bx-calendar'></i>
+                        </div>
+                        <div class="input-wrapper">
+                            <label>Exit date</label>
+                            <input type="date" id="exitDate" required>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="icon">
+                            <i class='bx bx-time'></i>
+                        </div>
+                        <div class="input-wrapper">
+                            <label>Exit time</label>
+                            <input type="time" id="exitTime" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-container">
+                    <button class="button" onclick="calculateQuotation(event)">Get Quotation</button>
+                </div>
+                <div id="resultElement"></div>
+            </div>
+        </div>
+    </div>
+    <div class="info-section">
+      <div class="info-grid">
+          <h2 class="section-title">Quick And Easy!</h2>
+          <div class="info-content">
+              <p>
+                  Here, you can easily reserve a parking spot for your vehicle in advance. No more circling the block looking for a parking space, or wasting time and money on parking meters. With our convenient online reservation system, you can guarantee a secure parking spot and save time when you arrive.
+              </p>
+              <p>
+                  Making a reservation is quick and easy. Simply select the date and time you need to park, choose your preferred parking spot, and complete the payment process. You'll receive a confirmation email with all the details of your reservation, including the location of your reserved parking spot.
+              </p>
+          </div>
+      </div>
+  </div>
+
+  <script src="reserve.js"></script>
+  <script src="app.js"></script>
+
+  <footer>
+    <div class="footer-content">
+        <h3>Spot it,Park it,Love it</h3>
+    
+        <ul class="socials">
+            <a href="https://facebook.com" target="_blank"><i class='bx bxl-facebook'></i></a>
+            <a href="https://twitter.com" target="_blank"><i class='bx bxl-twitter'></i></a>
+            <a href="https://instagram.com" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class='bx bxl-linkedin'></i></a>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Your Parking Companion. All rights reserved.</p>
+    </div>
+ </footer>
+</body>
+</html>

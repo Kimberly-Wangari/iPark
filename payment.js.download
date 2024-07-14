@@ -1,0 +1,89 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const payButton = document.getElementById('payButton');
+    const paymentOptions = document.getElementById('paymentOptions');
+    const selectPaymentMethodButton = document.getElementById('selectPaymentMethodButton');
+    const paymentDetails = document.getElementById('paymentDetails');
+    const form = document.getElementById('paymentForm');
+  
+    payButton.addEventListener('click', () => {
+      paymentOptions.style.display = 'block';
+      paymentDetails.style.display = 'none';
+    });
+  
+    selectPaymentMethodButton.addEventListener('click', () => {
+      const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+      paymentDetails.style.display = 'block';
+      showPaymentDetails(selectedMethod);
+    });
+  
+    function showPaymentDetails(method) {
+      paymentDetails.innerHTML = '';
+  
+      switch (method) {
+        case 'creditCard':
+          paymentDetails.innerHTML = `
+            <h2>Credit Card Payment</h2>
+            <label>
+              Card Number:
+              <input type="text" id="cardNumber" required>
+            </label><br>
+            <label>
+              Expiry Date:
+              <input type="text" id="expiryDate" required>
+            </label><br>
+            <label>
+              CVV:
+              <input type="text" id="cvv" required>
+            </label><br>
+            <button onclick="processPayment('creditCard')">Pay</button>
+          `;
+          break;
+        case 'paypal':
+          paymentDetails.innerHTML = `
+            <h2>PayPal Payment</h2>
+            <p>Redirecting to PayPal...</p>
+            <button onclick="processPayment('paypal')">Pay with PayPal</button>
+          `;
+          break;
+        case 'bankTransfer':
+          paymentDetails.innerHTML = `
+            <h2>Bank Transfer Payment</h2>
+            <p>Please transfer the amount to the following account:</p>
+            <p>Account Number: 123456789</p>
+            <p>Bank: Example Bank</p>
+            <button onclick="processPayment('bankTransfer')">Pay</button>
+          `;
+          break;
+        default:
+          paymentDetails.innerHTML = `<p>Please select a payment method.</p>`;
+          break;
+      }
+    }
+  
+    window.processPayment = function(method) {
+      switch (method) {
+        case 'creditCard':
+          const cardNumber = document.getElementById('cardNumber').value;
+          const expiryDate = document.getElementById('expiryDate').value;
+          const cvv = document.getElementById('cvv').value;
+          if (cardNumber && expiryDate && cvv) {
+            alert('Processing Credit Card Payment...');
+          } else {
+            alert('Please fill in all credit card details.');
+          }
+          break;
+        case 'paypal':
+          alert('Redirecting to PayPal...');
+          // Here you would typically redirect to PayPal's payment page
+          break;
+        case 'bankTransfer':
+          alert('Please proceed with the bank transfer.');
+          // Here you might provide further instructions or confirmation
+          break;
+        default:
+          alert('Please select a valid payment method.');
+          break;
+      }
+    };
+  });
+  

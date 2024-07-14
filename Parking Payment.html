@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://127.0.0.1:5500/payment.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Parking Payment_files/payment.css">
+    <link href="./Parking Payment_files/boxicons.min.css" rel="stylesheet">
+    <title>Parking Payment</title>
+</head>
+<body>
+    <nav>
+    <div class="nav-links" id="navLinks">
+        <i class="fa fa-times" onclick="hideMenu()"></i>
+        
+        <ul>
+            <li><a href="http://127.0.0.1:5500/Index.html">HOME</a></li>
+            <li><a href="http://127.0.0.1:5500/Reserve.html">RESERVE</a></li>
+            <li><a href="http://127.0.0.1:5500/Login.html">LOG IN</a></li>
+            <li><a href="http://127.0.0.1:5500/contact.html">CONTACT US</a></li>
+           
+        </ul>
+    </div> 
+</nav>
+   
+    <div class="container">
+       
+        <div class="background"> 
+    </div>
+
+        <h1>Parking Payment</h1>
+        <img alt="Parking Lot" src="./Parking Payment_files/Ipark logo.webp">
+        <p>Select your parking duration:</p>
+        <select fdprocessedid="cwph08">
+            <option value="1">1 Hour</option>
+            <option value="2">2 Hours</option>
+            <option value="3">3 Hours</option>
+            <option value="4">4 Hours</option>
+        </select>
+        <p>Choose your location:</p>
+        <select fdprocessedid="0ofnl">
+            <option value="1">Parking Lot A</option>
+            <option value="2">Parking Lot B</option>
+            <option value="3">Parking Lot C</option>
+            <option value="4">Parking Lot D</option>
+        </select>
+        <div id="paymentDetails"></div>
+
+
+
+        
+
+        <div id="paymentOptions">
+          <h2>Select a Payment Method</h2>
+          <label>
+            <input type="radio" name="paymentMethod" value="creditCard"> Credit Card
+          </label>
+          <label>
+            <input type="radio" name="paymentMethod" value="paypal"> PayPal
+          </label>
+          <label>
+            <input type="radio" name="paymentMethod" value="bankTransfer"> Bank Transfer
+          </label>
+          <button id="selectPaymentMethodButton" fdprocessedid="5dn47p">Pay</button>
+        </div>
+      
+        <div id="paymentDetails"></div>  
+
+  
+  
+        <script src="./Parking Payment_files/PaymentForm.js.download"></script>
+    </div>
+
+
+    <footer>
+        <div class="footer-content">
+            <h3>Spot it,Park it,Love it</h3>
+        
+            <ul class="socials">
+                <a href="https://facebook.com/" target="_blank"><i class="bx bxl-facebook"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="bx bxl-twitter"></i></a>
+                <a href="https://instagram.com/" target="_blank"><i class="bx bxl-instagram"></i></a>
+                <a href="https://linkedin.com/" target="_blank"><i class="bx bxl-linkedin"></i></a>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Your Parking Companion. All rights reserved.</p>
+        </div>
+     </footer>
+    
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>

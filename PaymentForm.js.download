@@ -1,0 +1,160 @@
+import React, { useState } from 'react';
+
+function processPayment(paymentMethod, paymentDetails) {
+  // Send request to server to process payment
+  fetch('/process-payment', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      paymentMethod,
+      paymentDetails,
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Handle payment response
+      console.log(data);
+    })
+    .catch(error => {
+      // Handle payment error
+      console.error(error);
+    });
+}
+
+function validatePaymentDetails(paymentMethod, paymentDetails) {
+  // Validate payment details based on payment method
+  switch (paymentMethod) {
+    case 'creditCard':
+      // Validate credit card details
+      return (
+        paymentDetails.cardNumber &&
+        paymentDetails.expiryDate &&
+        paymentDetails.cvv
+      );
+    case 'mpesa':
+      // Validate M-Pesa details
+      return paymentDetails.mpesaPhoneNumber;
+    case 'bankTransfer':
+      // Validate bank transfer details
+      return (
+        paymentDetails.accountNumber &&
+        paymentDetails.bankName
+      );
+    default:
+      // Handle invalid payment method
+      return false;
+  }
+}
+
+function getPaymentDetails(paymentMethod) {
+  // Return default payment details based on payment method
+  switch (paymentMethod) {
+    case 'creditCard':
+      return {
+        cardNumber: '',
+        expiryDate: '',
+        cvv: '',
+      };
+    case 'mpesa':
+      return {
+        mpesaPhoneNumber: '',
+      };
+    case 'bankTransfer':
+      return {
+        accountNumber: '',
+        bankName: '',
+      };
+    default:
+      // Handle invalid payment method
+      return {};
+  }
+}
+
+const PaymentForm = () => {
+  const [paymentMethod, setPaymentMethod] = useState('');
+  const [paymentDetails, setPaymentDetails] = useState({});
+
+  const handlePaymentMethodChange = (event) => {
+    setPaymentMethod(event.target.value);
+  };
+
+  const handleNextClick = () => {
+    if (paymentMethod) {
+      setPaymentDetails(getPaymentDetails(paymentMethod));
+    } else {
+      alert('Please select a payment method.');
+    }
+  };
+
+  const handlePayClick = () => {
+    if (validatePaymentDetails(paymentMethod, paymentDetails)) {
+      processPayment(paymentMethod, paymentDetails);
+    } else {
+      alert('Please enter valid payment details.');
+    }
+  };
+
+  return (
+    <div className="payment-form">
+      <h2>Payment Form</h2>
+      <form>
+        <label>
+          Payment Method:
+          <select value={paymentMethod} onChange={handlePaymentMethodChange}>
+            <option value="">Select a payment method</option>
+            <option value="creditCard">Credit Card</option>
+            <option value="mpesa">M-Pesa</option>
+            <option value="bankTransfer">Bank Transfer</option>
+          </select>
+        </label>
+        <button onClick={handleNextClick}>Next</button>
+      </form>
+      {paymentDetails && (
+        <div>
+          <h2>Payment Details</h2>
+          {paymentMethod === 'creditCard' && (
+            <div>
+              <label>
+                Card Number:
+                <input type="text" value={paymentDetails.cardNumber} />
+              </label>
+              <label>
+                Expiry Date:
+                <input type="text" value={paymentDetails.expiryDate} />
+              </label>
+              <label>
+                CVV:
+                <input type="text" value={paymentDetails.cvv} />
+              </label>
+            </div>
+          )}
+          {paymentMethod === 'mpesa' && (
+            <div>
+              <label>
+                M-Pesa Phone Number:
+                <input type="text" value={paymentDetails.mpesaPhoneNumber} />
+              </label>
+            </div>
+          )}
+          {paymentMethod === 'bankTransfer' && (
+            <div>
+              <label>
+                Account Number:
+                <input type="text" value={paymentDetails.accountNumber} />
+              </label>
+              <label>
+                Bank Name:
+                <input type="text" value={paymentDetails.bankName} />
+              </label>
+            </div>
+          )}
+          <button onClick={handlePayClick}>Pay</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default PaymentForm;

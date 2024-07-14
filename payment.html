@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="payment.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Parking Payment</title>
+</head>
+<body>
+    <nav>
+    <div class="nav-links" id="navLinks">
+        <i class="fa fa-times" onclick="hideMenu()"></i>
+        
+        <ul>
+            <li><a href="Index.html">HOME</a></li>
+            <li><a href="Reserve.html">RESERVE</a></li>
+            <li><a href="Login.html">LOG IN</a></li>
+            <li><a href="contact.html">CONTACT US</a></li>
+           
+        </ul>
+    </div> 
+</nav>
+   
+    <div class="container">
+       
+        <div class="background"> 
+    </div>
+
+        <h1>Parking Payment</h1>
+        <img alt="Parking Lot" src="Ipark logo.webp">
+        <p>Select your parking duration:</p>
+        <select>
+            <option value="1">1 Hour</option>
+            <option value="2">2 Hours</option>
+            <option value="3">3 Hours</option>
+            <option value="4">4 Hours</option>
+        </select>
+        <p>Choose your location:</p>
+        <select>
+            <option value="1">Parking Lot A</option>
+            <option value="2">Parking Lot B</option>
+            <option value="3">Parking Lot C</option>
+            <option value="4">Parking Lot D</option>
+        </select>
+        
+
+        <div id="paymentOptions">
+            <h2>Select a Payment Method</h2>
+            <label>
+              <input type="radio" name="paymentMethod" value="creditCard"> Credit Card
+            </label>
+            <label>
+              <input type="radio" name="paymentMethod" value="mpesa"> M-Pesa
+            </label>
+            <label>
+              <input type="radio" name="paymentMethod" value="bankTransfer"> Bank Transfer
+            </label>
+           
+          </div>
+        
+
+        
+          <button id="selectPaymentMethodButton" style="display: block; margin: 20px auto;">Pay</button>
+
+          
+        
+      
+        <div id="paymentDetails"></div> 
+        
+       
+  
+  
+        <script src="PaymentForm.js"></script>
+    </div>
+
+
+    <footer>
+        <div class="footer-content">
+            <h3>Spot it,Park it,Love it</h3>
+        
+            <ul class="socials">
+                <a href="https://facebook.com" target="_blank"><i class='bx bxl-facebook'></i></a>
+                <a href="https://twitter.com" target="_blank"><i class='bx bxl-twitter'></i></a>
+                <a href="https://instagram.com" target="_blank"><i class='bx bxl-instagram'></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class='bx bxl-linkedin'></i></a>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Your Parking Companion. All rights reserved.</p>
+        </div>
+     </footer>
+    
+</body>
+</html>
